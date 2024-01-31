@@ -1,20 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
+const ip = require('ip');
 
 const app =  express();
 
-const PORT = 4000;
-const HOST = 'localhost'
+const HOST = ip.address();
+const PORT = process.env.PORT;
 
 
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'your_database_host',
-  user: 'your_database_user',
-  password: 'your_database_password',
-  database: 'your_database_name',
+  host: HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
 // Create tables if not exist
