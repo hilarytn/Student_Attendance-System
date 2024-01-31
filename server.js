@@ -6,7 +6,7 @@ const ip = require('ip');
 const app =  express();
 
 const HOST = ip.address();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 
 app.use(bodyParser.json());
