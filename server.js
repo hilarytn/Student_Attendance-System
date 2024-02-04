@@ -11,10 +11,12 @@ const app =  express();
 const HOST = ip.address();
 const PORT = process.env.PORT || 4000;
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use(express.urlencoded({ extended: true }));
+
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
