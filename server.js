@@ -89,14 +89,34 @@ app.post('/api/add-student', (req, res) => {
 });
 
 app.post('/api/add-lecturer', (req, res) => {
-  const { lecturerName } = req.body;
-  const query = `INSERT INTO lecturers (lecturer_name) VALUES ('${lecturerName}')`;
-  connection.query(query, (error, results) => {
-    if (error) throw error;
-    res.json({ message: 'Lecturer added successfully' });
-  });
+    const { lecturerName } = req.body;
+  
+    // Check if lecturerName already exists
+    const checkQuery = `SELECT * FROM lecturers WHERE lecturer_name = '${lecturerName}'`;
+  
+    connection.query(checkQuery, (checkError, checkResults) => {
+      if (checkError) {
+        throw checkError;
+      }
+  
+      // If lecturerName already exists, return a message
+      if (checkResults.length > 0) {
+        return res.status(400).json({ message: 'Lecturer name already exists' });
+      }
+  
+      // If lecturerName does not exist, insert the new lecturer
+      const insertQuery = `INSERT INTO lecturers (lecturer_name) VALUES ('${lecturerName}')`;
+  
+      connection.query(insertQuery, (insertError, insertResults) => {
+        if (insertError) {
+          throw insertError;
+        }
+  
+        res.json({ message: 'Lecturer added successfully' });
+      });
+    });
 });
-
+  
 app.post('/api/add-course', (req, res) => {
   const { courseCode, courseName } = req.body;
   const query = `INSERT INTO courses (course_code, course_name) VALUES ('${courseCode}', '${courseName}')`;
