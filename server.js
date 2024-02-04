@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 4000;
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
