@@ -60,6 +60,10 @@ connection.query(`
   );
 `);
 
+app.get('/', (req, res) => {
+    res.render('index')
+})
+
 app.post('/api/add-student', (req, res) => {
     const { regNumber, studentName } = req.body;
 
