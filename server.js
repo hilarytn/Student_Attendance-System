@@ -60,7 +60,7 @@ connection.query(`
 `);
 
 app.post('/api/add-student', (req, res) => {
-  const { regNumber, studentName } = req.body;
+    const { regNumber, studentName } = req.body;
 
     // Check if regNumber already exists
     const checkQuery = `SELECT * FROM students WHERE reg_number = '${regNumber}'`;
@@ -118,13 +118,34 @@ app.post('/api/add-lecturer', (req, res) => {
 });
   
 app.post('/api/add-course', (req, res) => {
-  const { courseCode, courseName } = req.body;
-  const query = `INSERT INTO courses (course_code, course_name) VALUES ('${courseCode}', '${courseName}')`;
-  connection.query(query, (error, results) => {
-    if (error) throw error;
-    res.json({ message: 'Course added successfully' });
+    const { courseCode, courseName } = req.body;
+  
+    // Check if courseCode already exists
+    const checkQuery = `SELECT * FROM courses WHERE course_code = '${courseCode}'`;
+  
+    connection.query(checkQuery, (checkError, checkResults) => {
+      if (checkError) {
+        throw checkError;
+      }
+  
+      // If courseCode already exists, return a message
+      if (checkResults.length > 0) {
+        return res.status(400).json({ message: 'Course code already exists' });
+      }
+  
+      // If courseCode does not exist, insert the new course
+      const insertQuery = `INSERT INTO courses (course_code, course_name) VALUES ('${courseCode}', '${courseName}')`;
+  
+      connection.query(insertQuery, (insertError, insertResults) => {
+        if (insertError) {
+          throw insertError;
+        }
+  
+        res.json({ message: 'Course added successfully' });
+      });
+    });
   });
-});
+  
 
 app.get('/api/students', (req, res) => {
   // Retrieve student data from the database
