@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students Summary</title>
+  <link rel="stylesheet" href="../assets/css/students-course-summary.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Students Summary</h1>
+
+    <!-- Select Course Dropdown -->
+    <label for="selectCourse">Select Course:</label>
+    <select id="selectCourse" name="selectCourse" onchange="getStudentsSummary()" required>
+      <!-- Populate this dropdown dynamically with courses from the server -->
+    </select>
+
+    <!-- Summary Table -->
+    <div id="summaryTable"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
