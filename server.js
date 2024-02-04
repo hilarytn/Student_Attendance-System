@@ -11,7 +11,8 @@ const app =  express();
 const HOST = ip.address();
 const PORT = process.env.PORT || 4000;
 
-
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
