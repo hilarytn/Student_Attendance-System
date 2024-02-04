@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students Attendance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Students Attendance</h1>
+
+    <!-- Select Course Dropdown -->
+    <label for="selectCourse">Select Course:</label>
+    <select id="selectCourse" name="selectCourse" onchange="getStudentsAttendance()" required>
+      <!-- Populate this dropdown dynamically with courses from the server -->
+    </select>
+
+    <!-- Students List -->
+    <div id="studentsList"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
