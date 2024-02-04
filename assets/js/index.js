@@ -1,6 +1,9 @@
 // Helper function to make fetch requests
 const fetchData = async (url, method, data) => {
     try {
+        const button = document.activeElement;
+        button.innerHTML = '<span class="spinner"></span>Loading...';
+        
       const response = await fetch(url, {
         method,
         headers: {
