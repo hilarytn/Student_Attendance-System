@@ -82,7 +82,9 @@ app.post('/api/add-student', (req, res) => {
       if (checkResults.length > 0) {
         return res.status(400).json({ message: 'Registration number already exists' });
       }
-  
+      if (regNumber == '' || studentName == '') {
+        return res.status(400).json({ message: 'Registration Number or Student Name cannot be blank' })
+      } 
       // If regNumber does not exist, insert the new student
       const insertQuery = `INSERT INTO students (reg_number, student_name) VALUES ('${regNumber}', '${studentName}')`;
   

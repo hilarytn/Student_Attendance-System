@@ -1,9 +1,9 @@
 // Helper function to make fetch requests
-const fetchData = async (url, method, data) => {
+const fetchData = async (url, method, data, successCallback) => {
     try {
         const button = document.activeElement;
-        button.innerHTML = '<span class="spinner"></span>Loading...';
-        
+        button.innerHTML = '<span class="spinner"></span>Adding...';
+
       const response = await fetch(url, {
         method,
         headers: {
@@ -17,7 +17,9 @@ const fetchData = async (url, method, data) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+
+      button.innerHTML = 'Submitted!';
+
       return response.json();
     } catch (error) {
       console.error('Fetch error:', error);
@@ -29,7 +31,13 @@ const fetchData = async (url, method, data) => {
     const regNumber = document.getElementById('regNumber').value;
     const studentName = document.getElementById('studentName').value;
   
-    fetchData('/api/add-student', 'POST', { regNumber, studentName })
+    fetchData('/api/add-student', 'POST', { regNumber, studentName }, () => {
+        // Clear the form after a 2-second delay
+        setTimeout(() => {
+          document.getElementById('regNumber').value = '';
+          document.getElementById('studentName').value = '';
+        }, 2000);
+      })
       .then(data => {
         console.log(data);
         // Optionally update the UI or display a success message
