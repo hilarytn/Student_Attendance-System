@@ -19,6 +19,9 @@ const fetchData = async (url, method, data, successCallback) => {
       }
 
       button.innerHTML = 'Submitted!';
+      if (successCallback) {
+        successCallback();
+      }
 
       return response.json();
     } catch (error) {
@@ -36,12 +39,13 @@ const fetchData = async (url, method, data, successCallback) => {
         setTimeout(() => {
           document.getElementById('regNumber').value = '';
           document.getElementById('studentName').value = '';
+          document.getElementById('add-student-button').innerHTML = 'Add Student';
+          
         }, 2000);
       })
       .then(data => {
         console.log(data);
         // Optionally update the UI or display a success message
-        button.innerHTML = 'Add Student'
       });
   };
   
