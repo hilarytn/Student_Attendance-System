@@ -72,10 +72,18 @@ const fetchData = async (url, method, data, successCallback) => {
     const courseCode = document.getElementById('courseCode').value;
     const courseName = document.getElementById('courseName').value;
   
-    fetchData('/api/add-course', 'POST', { courseCode, courseName })
+    fetchData('/api/add-course', 'POST', { courseCode, courseName }, () => {
+        // Clear the form after a 2-second delay
+        setTimeout(() => {
+          document.getElementById('courseCode').value = '';
+          document.getElementById('courseName').value = '';
+          document.getElementById('add-course-button').innerHTML = 'Add Course';
+          
+        }, 2000);
+      })
       .then(data => {
         console.log(data);
-        // Optionally update the UI or display a success message
+        // Optionally update the UI or display a success message add-course-button
       });
   };
   
