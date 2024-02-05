@@ -208,6 +208,10 @@ app.post('/api/mark-attendance', (req, res) => {
   });
 });
 
+app.use((req, res) => {
+    res.status(404).render('not-found');
+  });
+
 
 app.listen(PORT, HOST, (req, res) => {
     console.log(`Server running on ${HOST}:${PORT}`);
