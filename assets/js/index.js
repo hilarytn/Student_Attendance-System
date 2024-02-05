@@ -89,6 +89,26 @@ const fetchData = async (url, method, data, successCallback) => {
   
   // Populate Courses dropdown and update Students dropdown based on selected course
   // Populate Courses dropdown
+  fetchData('/api/courses', 'GET')
+  .then(courses => {
+  const selectCourseDropdown = document.getElementById('selectCourse');
+  
+  // Clear previous options
+  selectCourseDropdown.innerHTML = '';
+  
+  // Populate Courses dropdown
+  courses.forEach(course => {
+      const option = document.createElement('option');
+      option.value = course.course_code;
+      option.textContent = course.course_name + '(' + course.course_code + ')';
+      selectCourseDropdown.appendChild(option);
+  });
+  
+  // Trigger change event to initially populate the students dropdown
+  //selectCourseDropdown.dispatchEvent(new Event('change'));
+  });
+
+
   document.getElementById('selectCourse').addEventListener('change', () => {
     const selectedCourseCode = document.getElementById('selectCourse').value;
   
@@ -109,7 +129,7 @@ const fetchData = async (url, method, data, successCallback) => {
   });
   
   // Mark Attendance
-  const markAttendance = () => {
+ /* const markAttendance = () => {
     const studentId = document.getElementById('selectStudent').value;
     const courseCode = document.getElementById('selectCourse').value;
     const lecturerId = 1; // Replace with actual lecturer ID or fetch it dynamically
@@ -129,4 +149,4 @@ const fetchData = async (url, method, data, successCallback) => {
         // Optionally update the UI or display a success message
       });
   };
-  
+  */
