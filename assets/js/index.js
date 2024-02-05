@@ -91,18 +91,18 @@ const fetchData = async (url, method, data, successCallback) => {
   // Populate Courses dropdown
   fetchData('/api/courses', 'GET')
   .then(courses => {
-  const selectCourseDropdown = document.getElementById('selectCourse');
+    const selectCourseDropdown = document.getElementById('selectCourse');
+    
+    // Clear previous options
+    selectCourseDropdown.innerHTML = '';
   
-  // Clear previous options
-  selectCourseDropdown.innerHTML = '';
-  
-  // Populate Courses dropdown
-  courses.forEach(course => {
-      const option = document.createElement('option');
-      option.value = course.course_code;
-      option.textContent = course.course_name + '(' + course.course_code + ')';
-      selectCourseDropdown.appendChild(option);
-  });
+    // Populate Courses dropdown
+    courses.forEach(course => {
+        const option = document.createElement('option');
+        option.value = course.course_code;
+        option.textContent = course.course_name + ' (' + course.course_code + ')';
+        selectCourseDropdown.appendChild(option);
+    });
   
   // Trigger change event to initially populate the students dropdown
   //selectCourseDropdown.dispatchEvent(new Event('change'));
