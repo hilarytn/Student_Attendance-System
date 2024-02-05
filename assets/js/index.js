@@ -53,7 +53,14 @@ const fetchData = async (url, method, data, successCallback) => {
   const addLecturer = () => {
     const lecturerName = document.getElementById('lecturerName').value;
   
-    fetchData('/api/add-lecturer', 'POST', { lecturerName })
+    fetchData('/api/add-lecturer', 'POST', { lecturerName }, () => {
+        // Clear the form after a 2-second delay
+        setTimeout(() => {
+          document.getElementById('lecturerName').value = '';
+          document.getElementById('add-lecturer-button').innerHTML = 'Add Lecturer';
+          
+        }, 2000);
+      })
       .then(data => {
         console.log(data);
         // Optionally update the UI or display a success message
