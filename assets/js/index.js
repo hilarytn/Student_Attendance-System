@@ -88,6 +88,25 @@ const fetchData = async (url, method, data, successCallback) => {
   };
   
   // Populate Courses dropdown and update Students dropdown based on selected course
+  // Populate Courses dropdown
+    fetchData('/api/courses', 'GET')
+    .then(courses => {
+    const selectCourseDropdown = document.getElementById('selectCourse');
+    
+    // Clear previous options
+    selectCourseDropdown.innerHTML = '';
+
+    // Populate Courses dropdown
+    courses.forEach(course => {
+        const option = document.createElement('option');
+        option.value = course.course_code;
+        option.textContent = course.course_name;
+        selectCourseDropdown.appendChild(option);
+    });
+
+    // Trigger change event to initially populate the students dropdown
+    selectCourseDropdown.dispatchEvent(new Event('change'));
+    });
   document.getElementById('selectCourse').addEventListener('change', () => {
     const selectedCourseCode = document.getElementById('selectCourse').value;
   
