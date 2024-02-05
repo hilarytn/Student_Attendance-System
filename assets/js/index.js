@@ -41,6 +41,7 @@ const fetchData = async (url, method, data, successCallback) => {
       .then(data => {
         console.log(data);
         // Optionally update the UI or display a success message
+        button.innerHTML = 'Add Student'
       });
   };
   
