@@ -105,7 +105,7 @@ const fetchData = async (url, method, data, successCallback) => {
     });
 
     // Trigger change event to initially populate the students dropdown
-    selectCourseDropdown.dispatchEvent(new Event('change'));
+    //selectCourseDropdown.dispatchEvent(new Event('change'));
     });
   document.getElementById('selectCourse').addEventListener('change', () => {
     const selectedCourseCode = document.getElementById('selectCourse').value;
