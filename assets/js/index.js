@@ -115,7 +115,15 @@ const fetchData = async (url, method, data, successCallback) => {
     const lecturerId = 1; // Replace with actual lecturer ID or fetch it dynamically
     const status = document.getElementById('attendanceStatus').value;
   
-    fetchData('/api/mark-attendance', 'POST', { studentId, courseCode, lecturerId, status })
+    fetchData('/api/mark-attendance', 'POST', { studentId, courseCode, lecturerId, status }, () => {
+        // Clear the form after a 2-second delay
+        setTimeout(() => {
+          document.getElementById('selectCourse').value = '';
+          document.getElementById('selectStudent').value = '';
+          document.getElementById('add-lecturer-button').innerHTML = 'Mark Attendance';
+          
+        }, 2000);
+      })
       .then(data => {
         console.log(data);
         // Optionally update the UI or display a success message
