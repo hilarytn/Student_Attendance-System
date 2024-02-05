@@ -64,7 +64,7 @@ connection.query(`
 `);
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('home')
 })
 
 app.post('/api/add-student', (req, res) => {

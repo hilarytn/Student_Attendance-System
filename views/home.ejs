@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students Attendance System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff; /* White background */
+      color: #000; /* Black text color */
+    }
+
+    header {
+      background-color: #4caf50; /* Green color */
+      color: white;
+      text-align: center;
+      padding: 1em;
+      font-size: 1.5em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #2e7d32; /* Dark green color */
+      padding: 0.5em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      color: #ffd54f; /* Yellow color on hover */
+    }
+
+    main {
+      padding: 20px;
+      background-color: #ffffff; /* White color for the card */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+      margin: 20px;
+    }
+
+    h2 {
+      color: #4caf50; /* Green color for headings */
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em;
+      background-color: #4caf50; /* Green color */
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Students Attendance System
+  </header>
+
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Signup</a>
+  </nav>
+
+  <main>
+    <h2>Welcome to the Students Attendance System</h2>
+    <p>
+      The Students Attendance System is designed to simplify and streamline the process of tracking student attendance in academic courses.
+      It follows a three-tier client-server architecture, integrating web and mobile applications.
+    </p>
+    <p>
+      <h3>Architecture Breakdown:</h3>
+      <h4>Presentation Tier (Client-Side):</h4>
+      <ul>
+        <li>Responsibility: Handling user interface and interaction.</li>
+        <li>Components:
+          <ul>
+            <li>HTML & CSS: Structuring and styling the user interface.</li>
+            <li>Client-Side JavaScript: Handling user interactions and making asynchronous requests to the server.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Application Tier (Server-Side):</h4>
+      <ul>
+        <li>Responsibility: Handling business logic, processing user requests, and communicating with the database.</li>
+        <li>Components:
+          <ul>
+            <li>Node.js: The server-side runtime environment.</li>
+            <li>Express: A web application framework for Node.js.</li>
+            <li>Routes and Controllers: Defining API endpoints and handling logic.</li>
+            <li>Business Logic: Logic related to attendance tracking, authentication, etc.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Data Tier (Database):</h4>
+      <ul>
+        <li>Responsibility: Managing and storing application data.</li>
+        <li>Components:
+          <ul>
+            <li>MySQL: The relational database system.</li>
+            <li>Database Schema: Defining tables, relationships, and constraints.</li>
+            <li>Queries: SQL queries for interacting with the database.</li>
+          </ul>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Explore the links above to access the login and signup pages and experience the functionality of the Students Attendance System.
+    </p>
+  </main>
+
+  <footer>
+    &copy; 2024 Students Attendance System
+  </footer>
+</body>
+</html>
