@@ -3,7 +3,7 @@ import mysql from 'mysql2';
 import ip from'ip';
 import dotenv from'dotenv';
 import path from 'path';
-import studentController from './controllers/StudentController';
+import { addStudent } from './controllers/StudentController';
 
 dotenv.config();
 
@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.post('/api/add-student', studentController.addStudent);
+app.post('/api/add-student', addStudent);
 app.post('/api/add-lecturer', (req, res) => {
     const { lecturerName } = req.body;
   
