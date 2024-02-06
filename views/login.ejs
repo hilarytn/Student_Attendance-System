@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link rel="stylesheet" href="../assets/css/login.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-cw9Uz3MxZa8g1Fkw4XiqzKvDOcoJfZlcwQn/WC5R9KtWz6JqBdJxGr/Dt7UqCez9i8y2oWq5rmOw8l8ThqD4bw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
             body {
     font-family: Arial, sans-serif;
@@ -41,10 +42,21 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+/* Style for the back button */
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}  
         </style>
     </head>
     <body>
         <form id="loginForm">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
             <h1>Student Attendance System</h1>
             <h2>Login</h2>
             <label for="username">Username:</label>
