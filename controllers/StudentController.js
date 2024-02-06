@@ -1,7 +1,7 @@
 import connection from '../models/db';
 
 
-const addStudent = async (req, res) => {
+export const addStudent = async (req, res) => {
     const { regNumber, studentName } = req.body;
 
     // Check if regNumber already exists
@@ -31,5 +31,3 @@ const addStudent = async (req, res) => {
       });
     });
 }
-
-module.exports = { addStudent };
