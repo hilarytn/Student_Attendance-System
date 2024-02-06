@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+//Create database connection
 export const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -11,7 +12,7 @@ export const connection = mysql.createConnection({
   port: process.env.DB_PORT || 3306
 });
 
-// Create tables if not exist
+// Create admin tables if not exist
 connection.query(`
   CREATE TABLE IF NOT EXISTS admins (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,7 +21,7 @@ connection.query(`
   );
 `);
 
-// Create tables if not exist
+// Create student tables if not exist
 connection.query(`
   CREATE TABLE IF NOT EXISTS students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,

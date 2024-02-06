@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* White background */
+            color: #000; /* Black text color */
+        }
+
+        header {
+            background-color: #4caf50; /* Green color */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            font-size: 1.5em;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4caf50; /* Green color for headings */
+        }
+
+        .course-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .course-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .course-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .course-description {
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        All Courses
+    </header>
+
+    <main>
+        <h2>List of Courses</h2>
+        <ul class="course-list">
+            <% for (var i = 0; i < courses.length; i++) { %>
+                <li class="course-item">
+                    <h3 class="course-title"><%= courses[i].title %></h3>
+                    <p class="course-description"><%= courses[i].description %></p>
+                </li>
+            <% } %>
+        </ul>
+    </main>
+</body>
+</html>
