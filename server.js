@@ -6,6 +6,7 @@ import { addStudent, getStudents, getStudentsByCourse } from './controllers/Stud
 import { addLecturer, getLecturers } from './controllers/LecturerController.js';
 import { addCourse, getCourses } from './controllers/CourseController.js';
 import { markAttendance } from './controllers/AttendanceController.js';
+import { createAdmin } from './controllers/AuthController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+app.post('/auth/api/admin-sign-up', createAdmin);
 app.post('/api/add-student', addStudent);
 app.post('/api/add-lecturer', addLecturer);
 app.post('/api/add-course', addCourse);
