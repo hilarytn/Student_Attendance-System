@@ -28,3 +28,11 @@ export const addLecturer = (req, res) => {
       });
     });
 }
+
+export const getLecturers = (req, res) => {
+    // Retrieve lecturer data from the database
+    connection.query('SELECT * FROM lecturers', (error, results) => {
+      if (error) throw error;
+      res.json(results);
+    });
+  }

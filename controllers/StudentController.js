@@ -31,3 +31,11 @@ export const addStudent = async (req, res) => {
       });
     });
 }
+
+export const getStudents = (req, res) => {
+    // Retrieve student data from the database
+    connection.query('SELECT * FROM students', (error, results) => {
+      if (error) throw error;
+      res.json(results);
+    });
+}

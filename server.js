@@ -4,8 +4,9 @@ import ip from'ip';
 import dotenv from'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { addStudent } from './controllers/StudentController.js';
-import { addLecturer } from './controllers/LecturerController.js';
+import { addStudent, getStudents } from './controllers/StudentController.js';
+import { addLecturer, getLecturers } from './controllers/LecturerController.js';
+import { addCourse, getCourses } from './controllers/CourseController.js';
 
 dotenv.config();
 
@@ -74,60 +75,10 @@ app.get('/', (req, res) => {
 
 app.post('/api/add-student', addStudent);
 app.post('/api/add-lecturer', addLecturer);
-  
-app.post('/api/add-course', (req, res) => {
-    const { courseCode, courseName } = req.body;
-  
-    // Check if courseCode already exists
-    const checkQuery = `SELECT * FROM courses WHERE course_code = '${courseCode}'`;
-  
-    connection.query(checkQuery, (checkError, checkResults) => {
-      if (checkError) {
-        throw checkError;
-      }
-  
-      // If courseCode already exists, return a message
-      if (checkResults.length > 0) {
-        return res.status(400).json({ message: 'Course code already exists' });
-      }
-  
-      // If courseCode does not exist, insert the new course
-      const insertQuery = `INSERT INTO courses (course_code, course_name) VALUES ('${courseCode}', '${courseName}')`;
-  
-      connection.query(insertQuery, (insertError, insertResults) => {
-        if (insertError) {
-          throw insertError;
-        }
-  
-        res.json({ message: 'Course added successfully' });
-      });
-    });
-  });
-  
-
-app.get('/api/students', (req, res) => {
-  // Retrieve student data from the database
-  connection.query('SELECT * FROM students', (error, results) => {
-    if (error) throw error;
-    res.json(results);
-  });
-});
-
-app.get('/api/courses', (req, res) => {
-  // Retrieve course data from the database
-  connection.query('SELECT * FROM courses', (error, results) => {
-    if (error) throw error;
-    res.json(results);
-  });
-});
-
-app.get('/api/lecturers', (req, res) => {
-  // Retrieve lecturer data from the database
-  connection.query('SELECT * FROM lecturers', (error, results) => {
-    if (error) throw error;
-    res.json(results);
-  });
-});
+app.post('/api/add-course', addCourse);
+app.get('/api/students', getStudents);
+app.get('/api/courses', getCourses);
+app.get('/api/lecturers', getLecturers);
 
 app.get('/api/course-students/:courseCode', (req, res) => {
   const { courseCode } = req.params;
