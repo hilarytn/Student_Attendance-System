@@ -31,7 +31,7 @@ app.get('/auth/student/signup', (req, res) => {
 })
 
 app.get('/auth/student/login', (req, res) => {
-    res.render('home')
+    res.render('login')
 })
 
 app.post('/auth/admin/sign-up', createAdmin);
