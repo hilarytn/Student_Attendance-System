@@ -1,4 +1,4 @@
-import connection from '../models/db';
+import connection from '../models/db.js';
 
 
 export const addStudent = async (req, res) => {
