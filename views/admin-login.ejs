@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="../assets/css/login.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-cw9Uz3MxZa8g1Fkw4XiqzKvDOcoJfZlcwQn/WC5R9KtWz6JqBdJxGr/Dt7UqCez9i8y2oWq5rmOw8l8ThqD4bw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+/* Style for the back button */
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}  
+        </style>
+    </head>
+    <body>
+        <form id="loginForm">
+            <a href="http://137.117.12.230:8080/" class="back-btn">< Back to Home<i class="fas fa-arrow-left"></i></a>
+            <h1>Student Attendance System</h1>
+            <h2>Administator Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </body>
+</html>

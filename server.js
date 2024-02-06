@@ -34,7 +34,24 @@ app.get('/auth/student/login', (req, res) => {
     res.render('login')
 })
 
-app.post('/auth/admin/sign-up', createAdmin);
+app.get('/auth/lecturer/signup', (req, res) => {
+    res.render('lecturer-signup')
+})
+
+app.get('/auth/lecturer/login', (req, res) => {
+    res.render('lecturer-login')
+})
+
+app.get('/auth/admin/signup', (req, res) => {
+    res.render('admin-login')
+})
+
+app.get('/auth/admin/login', (req, res) => {
+    res.render('admin-login')
+})
+
+
+app.post('/api/admin/sign-up', createAdmin);
 app.post('/api/add-student', addStudent);
 app.post('/api/add-lecturer', addLecturer);
 app.post('/api/add-course', addCourse);
