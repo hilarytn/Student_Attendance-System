@@ -4,9 +4,10 @@ import ip from'ip';
 import dotenv from'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { addStudent, getStudents } from './controllers/StudentController.js';
+import { addStudent, getStudents, getStudentsByCourse } from './controllers/StudentController.js';
 import { addLecturer, getLecturers } from './controllers/LecturerController.js';
 import { addCourse, getCourses } from './controllers/CourseController.js';
+import { markAttendance } from './controllers/AttendanceController.js';
 
 dotenv.config();
 
@@ -24,51 +25,6 @@ app.set('view engine', 'ejs');
 app.set('views', join(__dirname, 'views'));
 app.use('/assets', express.static(join(__dirname, 'assets')));
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: 3306
-});
-
-// Create tables if not exist
-connection.query(`
-  CREATE TABLE IF NOT EXISTS students (
-    student_id INT AUTO_INCREMENT PRIMARY KEY,
-    reg_number VARCHAR(255),
-    student_name VARCHAR(255)
-  );
-`);
-
-connection.query(`
-  CREATE TABLE IF NOT EXISTS courses (
-    course_code VARCHAR(255) PRIMARY KEY,
-    course_name VARCHAR(255)
-  );
-`);
-
-connection.query(`
-  CREATE TABLE IF NOT EXISTS lecturers (
-    lecturer_id INT AUTO_INCREMENT PRIMARY KEY,
-    lecturer_name VARCHAR(255)
-  );
-`);
-
-connection.query(`
-  CREATE TABLE IF NOT EXISTS attendance (
-    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT,
-    course_code VARCHAR(255),
-    lecturer_id INT,
-    attendance_date DATE,
-    status VARCHAR(50),
-    FOREIGN KEY (student_id) REFERENCES students(student_id),
-    FOREIGN KEY (course_code) REFERENCES courses(course_code),
-    FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
-  );
-`);
-
 app.get('/', (req, res) => {
     res.render('home')
 })
@@ -79,33 +35,8 @@ app.post('/api/add-course', addCourse);
 app.get('/api/students', getStudents);
 app.get('/api/courses', getCourses);
 app.get('/api/lecturers', getLecturers);
-
-app.get('/api/course-students/:courseCode', (req, res) => {
-  const { courseCode } = req.params;
-  // Retrieve students for a specific course
-  const query = `
-    SELECT students.student_id, students.student_name
-    FROM students
-    JOIN courses ON courses.course_code = '${courseCode}'
-  `;
-  connection.query(query, (error, results) => {
-    if (error) throw error;
-    res.json(results);
-  });
-});
-
-app.post('/api/mark-attendance', (req, res) => {
-  const { studentId, courseCode, lecturerId, status } = req.body;
-  // Update attendance in the database
-  const query = `
-    INSERT INTO attendance (student_id, course_code, lecturer_id, attendance_date, status)
-    VALUES (${studentId}, '${courseCode}', ${lecturerId}, CURDATE(), '${status}')
-  `;
-  connection.query(query, (error, results) => {
-    if (error) throw error;
-    res.json({ message: 'Attendance marked successfully' });
-  });
-});
+app.get('/api/course-students/:courseCode', getStudentsByCourse);
+app.post('/api/mark-attendance', markAttendance);
 
 app.use((req, res) => {
     res.status(404).render('not-found');

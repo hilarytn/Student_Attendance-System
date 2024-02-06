@@ -11,5 +11,42 @@ export const connection = mysql.createConnection({
   port: process.env.DB_PORT || 3306
 });
 
+// Create tables if not exist
+connection.query(`
+  CREATE TABLE IF NOT EXISTS students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    reg_number VARCHAR(255),
+    student_name VARCHAR(255)
+  );
+`);
+
+connection.query(`
+  CREATE TABLE IF NOT EXISTS courses (
+    course_code VARCHAR(255) PRIMARY KEY,
+    course_name VARCHAR(255)
+  );
+`);
+
+connection.query(`
+  CREATE TABLE IF NOT EXISTS lecturers (
+    lecturer_id INT AUTO_INCREMENT PRIMARY KEY,
+    lecturer_name VARCHAR(255)
+  );
+`);
+
+connection.query(`
+  CREATE TABLE IF NOT EXISTS attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_code VARCHAR(255),
+    lecturer_id INT,
+    attendance_date DATE,
+    status VARCHAR(50),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_code) REFERENCES courses(course_code),
+    FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
+  );
+`);
+
 
 export default connection;

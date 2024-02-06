@@ -39,3 +39,17 @@ export const getStudents = (req, res) => {
       res.json(results);
     });
 }
+
+export const getStudentsByCourse = (req, res) => {
+    const { courseCode } = req.params;
+    // Retrieve students for a specific course
+    const query = `
+      SELECT students.student_id, students.student_name
+      FROM students
+      JOIN courses ON courses.course_code = '${courseCode}'
+    `;
+    connection.query(query, (error, results) => {
+      if (error) throw error;
+      res.json(results);
+    });
+  }
