@@ -32,7 +32,7 @@ export const addStudent = async (req, res) => {
     });
 }
 
-export const getStudents = (req, res) => {
+export const getStudents = async (req, res) => {
     // Retrieve student data from the database
     connection.query('SELECT * FROM students', (error, results) => {
       if (error) throw error;
@@ -40,7 +40,7 @@ export const getStudents = (req, res) => {
     });
 }
 
-export const getStudentsByCourse = (req, res) => {
+export const getStudentsByCourse = async (req, res) => {
     const { courseCode } = req.params;
     // Retrieve students for a specific course
     const query = `

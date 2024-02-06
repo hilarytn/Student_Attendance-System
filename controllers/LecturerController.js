@@ -1,6 +1,6 @@
 import connection from '../models/db.js';
 
-export const addLecturer = (req, res) => {
+export const addLecturer = async (req, res) => {
     const { lecturerName } = req.body;
   
     // Check if lecturerName already exists
@@ -29,7 +29,7 @@ export const addLecturer = (req, res) => {
     });
 }
 
-export const getLecturers = (req, res) => {
+export const getLecturers = async (req, res) => {
     // Retrieve lecturer data from the database
     connection.query('SELECT * FROM lecturers', (error, results) => {
       if (error) throw error;
