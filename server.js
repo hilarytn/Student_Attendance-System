@@ -50,6 +50,10 @@ app.get('/auth/admin/login', (req, res) => {
     res.render('admin-login')
 })
 
+app.get('/auth/admin/home', (req, res) => {
+    res.render('index')
+})
+
 app.get('/auth/student/mark-attendance', (req, res) => {
     res.render('student-mark-attendance')
 })
