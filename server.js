@@ -50,6 +50,10 @@ app.get('/auth/admin/login', (req, res) => {
     res.render('admin-login')
 })
 
+app.get('/auth/student/mark-attendance', (req, res) => {
+    res.render('student-mark-attendance')
+})
+
 
 app.post('/api/admin/sign-up', createAdmin);
 app.post('/api/add-student', addStudent);
