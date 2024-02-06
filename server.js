@@ -1,7 +1,5 @@
 import express from 'express';
-import mysql from 'mysql2';
 import ip from'ip';
-import dotenv from'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { addStudent, getStudents, getStudentsByCourse } from './controllers/StudentController.js';
