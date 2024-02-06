@@ -7,8 +7,6 @@ import { addLecturer, getLecturers } from './controllers/LecturerController.js';
 import { addCourse, getCourses } from './controllers/CourseController.js';
 import { markAttendance } from './controllers/AttendanceController.js';
 
-dotenv.config();
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
