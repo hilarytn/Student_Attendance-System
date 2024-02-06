@@ -1,9 +1,9 @@
-const express = require('express');
-const mysql = require('mysql2');
-const ip = require('ip');
-const dotenv = require('dotenv');
-const path = require('path');
-const studentController = require('./controllers/StudentController')
+import express from 'express';
+import mysql from 'mysql2';
+import ip from'ip';
+import dotenv from'dotenv';
+import path from 'path';
+import studentController from './controllers/StudentController';
 
 dotenv.config();
 
@@ -69,7 +69,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/add-student', studentController.addStudent);
-
 app.post('/api/add-lecturer', (req, res) => {
     const { lecturerName } = req.body;
   

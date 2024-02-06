@@ -1,4 +1,4 @@
-const connection = require('../models/db');
+import connection from '../models/db';
 
 
 const addStudent = async (req, res) => {
