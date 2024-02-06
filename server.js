@@ -26,7 +26,15 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.post('/auth/api/admin-sign-up', createAdmin);
+app.get('/auth/student/signup', (req, res) => {
+    res.render('sign-up')
+})
+
+app.get('/auth/student/login', (req, res) => {
+    res.render('home')
+})
+
+app.post('/auth/admin/sign-up', createAdmin);
 app.post('/api/add-student', addStudent);
 app.post('/api/add-lecturer', addLecturer);
 app.post('/api/add-course', addCourse);
