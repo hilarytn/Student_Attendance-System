@@ -16,21 +16,25 @@ connection.query(`
   CREATE TABLE IF NOT EXISTS students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     reg_number VARCHAR(255),
-    student_name VARCHAR(255)
+    student_name VARCHAR(255),
+    password VARCHAR(255)
   );
 `);
 
 connection.query(`
   CREATE TABLE IF NOT EXISTS courses (
     course_code VARCHAR(255) PRIMARY KEY,
-    course_name VARCHAR(255)
+    course_name VARCHAR(255),
+    lecturer_id INT,
+    FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
   );
 `);
 
 connection.query(`
   CREATE TABLE IF NOT EXISTS lecturers (
     lecturer_id INT AUTO_INCREMENT PRIMARY KEY,
-    lecturer_name VARCHAR(255)
+    lecturer_name VARCHAR(255),
+    password VARCHAR(255) NOT NULL
   );
 `);
 
