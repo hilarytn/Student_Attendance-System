@@ -3,7 +3,7 @@ import mysql from 'mysql2';
 import ip from'ip';
 import dotenv from'dotenv';
 import path from 'path';
-import { addStudent } from './controllers/StudentController';
+import { addStudent } from './controllers/StudentController.js';
 
 dotenv.config();
 
