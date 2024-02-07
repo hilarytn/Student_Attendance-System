@@ -53,3 +53,9 @@ export const getStudentsByCourse = async (req, res) => {
       res.json(results);
     });
   }
+
+  export const studentLogin = async (req, res) => {
+    const { regNumber, password } = req.body;
+
+    res.redirect('http://137.117.12.230:8080/auth/student/mark-attendance')
+  }  
