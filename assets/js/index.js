@@ -89,7 +89,7 @@ const fetchData = async (url, method, data, successCallback) => {
   
   // Populate Courses dropdown and update Students dropdown based on selected course
   // Populate Courses dropdown
-  fetchData('/api/courses', 'GET')
+  /*fetchData('/api/courses', 'GET')
   .then(courses => {
     const selectCourseDropdown = document.getElementById('selectCourse');
     
