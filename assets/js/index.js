@@ -109,7 +109,7 @@ const fetchData = async (url, method, data, successCallback) => {
   });
 
 
-  document.getElementById('selectCourse').addEventListener('change', () => {
+ /* document.getElementById('selectCourse').addEventListener('change', () => {
     const selectedCourseCode = document.getElementById('selectCourse').value;
   
     fetchData(`/api/course-students/${selectedCourseCode}`, 'GET')
